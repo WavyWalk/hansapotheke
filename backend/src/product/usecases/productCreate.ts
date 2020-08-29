@@ -33,7 +33,7 @@ class ProductCreate {
         return createdInstance
     }
 
-    buildTagsToConnect = (product: Product) => {
+    protected buildTagsToConnect = (product: Product) => {
         const allTags: {id?: number}[] = [
             ...product.manufacturer.array,
             ...product.activeSubstances.array,
@@ -47,7 +47,7 @@ class ProductCreate {
         })
     }
 
-    buildCategories = async (
+    protected buildCategories = async (
         primaryCategories: ModelCollection<Category>,
         secondaryCategories: ModelCollection<Category>,
     ) => {
@@ -74,14 +74,14 @@ class ProductCreate {
     }
 
 
-    addAllCategoryParents(category: Category, categoryIdsToAdd: { [p: number]: number }) {
+    protected addAllCategoryParents(category: Category, categoryIdsToAdd: { [p: number]: number }) {
         if (category.parent) {
             categoryIdsToAdd[category.parent.id!] = category.parent.id!
             this.addAllCategoryParents(category.parent!, categoryIdsToAdd)
         }
     }
 
-    buildPrices = (product: Product) => {
+    protected buildPrices = (product: Product) => {
         let data: Parameters<typeof App.prisma.product.create>[0]['data']['prices'] = {create: []}
         data!.create = product.prices.array.map((it)=>{
             return {
@@ -92,7 +92,7 @@ class ProductCreate {
         return data
     }
 
-    buildImagesData = (product: Product) => {
+    protected buildImagesData = (product: Product) => {
         let data: Parameters<typeof App.prisma.product.create>[0]['data']['images'] = {create: []}
         data!.create = product.images.array.map((it)=>{
             return {
@@ -104,7 +104,7 @@ class ProductCreate {
         return data
     }
 
-    buildBaseProductData(product: Product) {
+    protected buildBaseProductData(product: Product) {
         let data: Parameters<typeof App.prisma.product.create>[0]['data'] = {
             uid: product.uid!,
             pharmaForm: product.pharmaForm,

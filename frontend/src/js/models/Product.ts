@@ -25,7 +25,7 @@ export class Product extends BaseModel {
     averageRating?: number
 
     @Property
-    brand?: Tag[]
+    brand?: string
 
     @Property
     created?: string

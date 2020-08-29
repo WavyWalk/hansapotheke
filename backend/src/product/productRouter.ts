@@ -20,17 +20,7 @@ productRouter.get('/uid/:uid/exists', handleAsync(async (req, res) => {
 
 productRouter.get('/:id', handleAsync(async (req, res) => {
     const id = parseInt(req.params.id)
-    let product = await productRepository.findOne({
-        where: {
-            id
-        },
-        include: {
-            tags: true,
-            categories: true,
-            prices: true,
-            images: true
-        }
-    })
+    let product = await productRepository.findOneForShow(id)
     if (!product) {
         res.status(404)
         res.end()

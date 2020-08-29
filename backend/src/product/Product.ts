@@ -27,9 +27,6 @@ export class Product extends BaseModel {
                 case "ADDITIVE_SUBSTANCE":
                     this.activeSubstances.array.push(it)
                     break
-                case "BRAND":
-                    this.brand.array.push(it)
-                    break
                 case "MANUFACTURER":
                     this.manufacturer.array.push(it)
                     break
@@ -72,8 +69,8 @@ export class Product extends BaseModel {
     @Property
     averageRating?: number
 
-    @HasMany('Tag')
-    brand!: ModelCollection<Tag>
+    @Property
+    brand?: string
 
     @Property
     created?: string

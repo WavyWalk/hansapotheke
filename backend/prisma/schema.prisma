@@ -48,6 +48,7 @@ model Product {
     isBaseProduct Boolean?
     pharmaForm String?
     baseProductUid String?
+    brand String?
     baseProductUidGroup String?
     baseProduct Product? @relation("Variants", fields: [baseProductUid], references: [uid])
     variants Product[] @relation("Variants")
