@@ -1,0 +1,12 @@
+# Prisma Migrate lockfile v1
+
+20200827165616-initial
+20200827185532-product-schema
+20200827204957-rename-medias-to-images
+20200827211857-added-base-product-uid-group
+20200827212845-price-to-product-references
+20200827214308-added-currency-to-price
+20200827221234-added-indexes-to-product
+20200828093745-added-categories
+20200829143330-added-pharma-form-to-product
+20200829205452-added-missing-fields-to-product
