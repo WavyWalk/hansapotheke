@@ -33,21 +33,16 @@ const TopMenu = () => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        {currentUserState.isOrganiser()
+                        {currentUserState.isAdmin()
                             && <NavItem>
-                                <NavLink to={`/user/roleOrganiser/dashboard/events`} className="nav-link">
-                                    My dashboard
+                                <NavLink to={`/product/new`} className="nav-link">
+                                    Create new product
                                 </NavLink>
                             </NavItem>
                         }
                         <NavItem>
                             <NavLink to={`/aboutDemo`} className="nav-link">
                                 About demo
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink to={`/product/new`} className="nav-link">
-                                Create new product
                             </NavLink>
                         </NavItem>
                     </Nav>
@@ -69,7 +64,7 @@ const TopMenu = () => {
                                 <NavLink to="/login" className="nav-link">
                                     Login
                                 </NavLink>
-                                <NavLink to={'/user/registerOrganizer'} className="nav-link">
+                                <NavLink to={'/user/new'} className="nav-link">
                                     Register
                                 </NavLink>
                             </>

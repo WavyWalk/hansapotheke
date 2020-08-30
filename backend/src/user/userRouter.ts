@@ -10,11 +10,11 @@ import {Session} from "../Session/session"
 
 export const userRouter = Router({mergeParams: true})
 
-userRouter.post('/registration', handleAsync(async (req, res)=>{
+userRouter.post('/registration/admin', handleAsync(async (req, res)=>{
     let user = new User(req.body)
     const roles = await App.prisma.role.findMany({
         where: {
-            name: 'ORGANIZER'
+            name: 'ADMIN'
         }
     })
     const role = roles[0]!

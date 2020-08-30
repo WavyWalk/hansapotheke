@@ -76,11 +76,11 @@ export class Product extends BaseModel {
     secondaryCategories!: ModelCollection<Category>
 
     getListPrice = () => {
-        return this.prices.array.find(it=>it.priceType === 'LIST_PRICE')
+        return this.prices.array.find(it=>it.priceType === 'LIST')
     }
 
     getRetailPrice = () => {
-        return this.prices.array.find(it=>it.priceType === 'RETAIL_PRICE')
+        return this.prices.array.find(it=>it.priceType === 'RETAIL')
     }
 
     @ApiEndpoint('POST', {url: `/api/product`})
@@ -97,5 +97,21 @@ export class Product extends BaseModel {
     @ApiEndpoint('GET', {url: `/api/product/:id`})
     static show: (options: RequestOptions & {wilds: {id: any}}) => Promise<Product>
 
+    getFirstImagePath = () => {
+        return this.images.array[0]?.path
+    }
+
+    getDiscountPercent = () => {
+        let listPrice = this.getListPrice()?.value
+        let retailPrice = this.getRetailPrice()?.value
+        if (!listPrice || !retailPrice) {
+            return null
+        }
+        let difference = listPrice - retailPrice
+        if (difference > 0) {
+            return (100 - (100 / listPrice * retailPrice)).toFixed(1)
+        }
+        return null
+    }
 
 }

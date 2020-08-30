@@ -13,7 +13,7 @@ export class ScrapeOriginalDataCommand {
         let content = fs.readFileSync(`${PROJECT_DIR}/originalData/scrapedData.json`).toString()
         let parsed = JSON.parse(content)
         // await migrateScrapedCategories.run(parsed)
-        await migrateScrapedProducts.run(parsed[0])
+        await migrateScrapedProducts.run(parsed.slice(0, 10))
     }
 
 }

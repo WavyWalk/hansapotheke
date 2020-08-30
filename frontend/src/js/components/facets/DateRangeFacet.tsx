@@ -55,7 +55,7 @@ const DateRangeBase: React.FC<{
                 <DateRangePicker
                     ranges={[selectionRange]}
                     onChange={(...args: any[]) => {
-                        GlobalSearchState.instance.refineEventDate(args[0])
+                        // GlobalSearchState.instance.refineEventDate(args[0])
                     }}
                 />
             </div>

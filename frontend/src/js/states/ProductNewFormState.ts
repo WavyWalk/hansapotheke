@@ -9,6 +9,7 @@ import {Tag} from "../models/Tag";
 import {ITagForSelect, TagTypes} from "../models/tag/tagTypes";
 import {Price} from "../models/Price";
 import {PriceValidator} from "../models/validations/PriceValidator";
+import {RouterNavigationUtils} from "../utils/routing/RouterNavigationUtils";
 
 export class ProductNewFormState extends FormState {
 
@@ -42,8 +43,8 @@ export class ProductNewFormState extends FormState {
 
     init() {
         this.model.prices.array = [
-            new Price({priceType: 'RETAIL_PRICE'}),
-            new Price({priceType: 'LIST_PRICE'})
+            new Price({priceType: 'RETAIL'}),
+            new Price({priceType: 'LIST'})
         ]
         this.loadPrimaryCategories()
         this.loadSecondaryCategories()
@@ -60,6 +61,7 @@ export class ProductNewFormState extends FormState {
         this.validateManufacturer()
         this.validateSecondaryCategories()
         this.validatePrimaryCategories()
+        this.validateBrand()
         this.model.prices.array.forEach((it)=>{this.validatePrice(it)})
         this.validateImagesPresence()
         this.validatePharmaForm()
@@ -124,6 +126,11 @@ export class ProductNewFormState extends FormState {
 
     validateProductName = () => {
         ProductValidator.validateName(this.model)
+        this.update()
+    }
+
+    validateBrand = () => {
+        ProductValidator.validateBrand(this.model)
         this.update()
     }
 
@@ -402,5 +409,6 @@ export class ProductNewFormState extends FormState {
             return
         }
         let result = await this.model.create({isLoadingToggle: toggleProgress})
+        RouterNavigationUtils.pushTo(`/product/${result.id}`)
     }
 }

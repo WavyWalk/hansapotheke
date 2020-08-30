@@ -30,7 +30,9 @@ export class MigrateScrapedProducts {
         product.baseProductUid = product.uid
         product.pzn = productData.pzn
         product.packSize = productData.packSize
+        product.brand = productData.brand
         product.pharmaForm = productData.pharmaForm
+        product.prescriptionMedicine = productData.prescriptionMedicine
         product.tags = await this.prepareTags(productData) as IScrapedTag[]
         let image = await mediaRepository.createDirectLinkTypedImage(productData.image)
         product.images = [image as unknown as IScrapeMedia]

@@ -25,6 +25,13 @@ const RangeSlider: React.FC<{
         return null
     }
 
+    const formatPrice = (value: any) => {
+        if (!value) {
+            return null
+        }
+        return (value / 100).toFixed(2)
+    }
+
     return <ReactSlider
         defaultValue={[initial.min, initial.max]}
         minDistance={5}
@@ -38,7 +45,7 @@ const RangeSlider: React.FC<{
         renderThumb={(props: any)=>{
             return <div {...props}>
                 <span className="current-range-value">
-                    {props['aria-valuenow']}
+                    {formatPrice(props['aria-valuenow'])}
                 </span>
             </div>
         }}

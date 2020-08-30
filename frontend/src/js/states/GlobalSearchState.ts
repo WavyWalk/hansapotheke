@@ -16,27 +16,10 @@ export class GlobalSearchState extends SubscriptionState {
     refinePrice = (min: any, max: any) => {
         this.searchState = this.searchState ?? {}
         this.searchState.range = this.searchState.range ?? {}
-        this.searchState.range.price = {
+        this.searchState.range.retailPrice = {
             min, max
         }
         this.update()
-    }
-
-    refineEventDate = (value: any) => {
-        let startDate = value.selection?.startDate
-        let endDate = value.selection?.endDate
-
-        if (startDate && endDate) {
-            startDate = startOfDay(startDate)
-            endDate = endOfDay(endDate)
-            this.searchState = this.searchState ?? {}
-            this.searchState.range = this.searchState.range ?? {}
-            this.searchState.range[algoliaConfigData.facets.date.name] = {
-                min: getUnixTime(startDate),
-                max: getUnixTime(endDate)
-            }
-            this.update()
-        }
     }
 
     cleanup = () => {

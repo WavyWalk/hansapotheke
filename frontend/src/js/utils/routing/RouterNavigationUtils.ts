@@ -15,4 +15,7 @@ export class RouterNavigationUtils {
         this.history.push("/eventDatesPresenceError")
     }
 
+    static pushTo(url: string) {
+        this.history.push(url)
+    }
 }

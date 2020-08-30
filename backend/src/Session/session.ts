@@ -24,6 +24,11 @@ const logIn = async (res: Response, user: User, roleNames: string[]) => {
     })
 }
 
+const userIsAdmin = async (req: Request) => {
+    const currentUser = await Session.getCurrentUser(req)
+    return (currentUser && !!currentUser.roles!.array.find(it=>it.name === 'ADMIN'))
+}
+
 const getCurrentUser = async (req: Request): Promise<User | null> => {
     const token = req.cookies.token
     try {
@@ -57,5 +62,6 @@ const logout = (res: Response) => {
 export const Session = {
     logIn,
     getCurrentUser,
-    logout
+    logout,
+    userIsAdmin
 }

@@ -31,6 +31,6 @@ sessionRouter.post('/login', handleAsync(async (req, res)=>{
 }))
 
 sessionRouter.delete('/logout', handleAsync(async (req, res)=> {
-    const user = await Session.getCurrentUser(req)
+    Session.logout(res)
     res.send({status: 'ok'})
 }))

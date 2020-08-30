@@ -31,7 +31,7 @@ const PriceNew: React.FC<{
             property={asKeyOf<Price>('value')}
             validate={()=>formState.validatePrice(price)}
         />
-        {price.priceType === 'RETAIL_PRICE' &&
+        {price.priceType === 'RETAIL' &&
             <DropdownSelect
                 formState={formState}
                 model={price}
@@ -45,7 +45,7 @@ const PriceNew: React.FC<{
                 validate={()=>formState.validatePrice(price)}
             />
         }
-        {price.priceType === 'LIST_PRICE' && formState.priceCanBeCopiedFromRetailToListPrice() &&
+        {price.priceType === 'LIST' && formState.priceCanBeCopiedFromRetailToListPrice() &&
             <Button
                 onClick={()=>{
                     formState.copyPriceFromRetailToListPrice()

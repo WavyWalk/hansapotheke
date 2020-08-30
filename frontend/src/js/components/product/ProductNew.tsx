@@ -36,6 +36,17 @@ const ProductNew: React.FC = () => {
                 />
             </Col>
         </Row>
+        <Row className="justify-content-center form-block">
+            <Col lg={4}>
+                <PlainInput
+                    formState={formState}
+                    model={product}
+                    label={'Brand'}
+                    property={asKeyOf<Product>('brand')}
+                    validate={formState.validateBrand}
+                />
+            </Col>
+        </Row>
         <TextareaInput
             formState={formState}
             model={product}

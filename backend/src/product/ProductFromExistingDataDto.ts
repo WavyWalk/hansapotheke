@@ -6,7 +6,7 @@ export class ProductFromExistingDataDto {
     baseProductUidGroup?: string
     attributes?: IScrapedTag[]
     averageRating?: number
-    brand?: IScrapedTag[]
+    brand?: string
     created?: string
     pzn?: string
     descriptionShort?: string

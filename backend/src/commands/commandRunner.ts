@@ -1,4 +1,5 @@
 import {ScrapeOriginalDataCommand} from "./ScrapeOriginalDataCommand";
+import {algoliaIndexer} from "./AlgoliaIndexer";
 
 export const commandRunner = {
     run: async (args: string[]) => {
@@ -9,6 +10,9 @@ export const commandRunner = {
         switch (command) {
             case 'scrapeData':
                 await ScrapeOriginalDataCommand.run()
+                break
+            case 'indexAlgolia':
+                await algoliaIndexer.run()
                 break
             default:
                 return false

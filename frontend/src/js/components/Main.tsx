@@ -7,6 +7,8 @@ import {LoginForm} from "./session/LoginForm"
 import {UserRoleOrganizerDashboard} from "./user/UserRoleOrganiserDashboard"
 import {AboutDemo} from "./pages/AboutDemo"
 import {ProductNew} from "./product/ProductNew";
+import {ProductGlobalSearch} from "./product/ProductGlobalSearch";
+import {ProductDetailShow} from "./product/ProductDetailShow";
 
 const Main = () => {
 
@@ -15,12 +17,12 @@ const Main = () => {
         <Container fluid>
             <Switch>
                 <Route exact path={'/'}>
-
+                    <ProductGlobalSearch/>
                 </Route>
                 <Route exact path={`/aboutDemo`}>
                     <AboutDemo/>
                 </Route>
-                <Route exact path={'/user/registerOrganizer'}>
+                <Route exact path={'/user/new'}>
                     <UserNew
                         open={true}
                     />
@@ -34,13 +36,9 @@ const Main = () => {
                 <Route path={`/user/roleOrganiser/dashboard`}>
                     <UserRoleOrganizerDashboard/>
                 </Route>
-                <Route exact path={`/event/search`}>
-
-                </Route>
-                <Route exact path={`/event/:eventId`} render={(props)=>{
-                    return <div>
-
-                    </div>
+                <Route exact path={`/product/:productId`} render={(props)=>{
+                    const productId = props.match.params.productId
+                    return <ProductDetailShow productId={productId}/>
                 }}/>
             </Switch>
         </Container>

@@ -25,6 +25,7 @@ export class App {
 
     static async init() {
         ModelRegistrator.run()
+        WebpackStatsInfo.readAndAssignStats()
         App.prisma = new PrismaClient({
             log: ['query', 'info', 'warn']
         })
@@ -33,7 +34,6 @@ export class App {
             return
         }
         const app = express()
-        WebpackStatsInfo.readAndAssignStats()
         app.set('view engine', 'pug')
         app.disable('x-powered-by')
         setMiddleware(app)

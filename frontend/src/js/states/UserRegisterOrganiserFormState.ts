@@ -1,6 +1,6 @@
 import { FormState } from "../libs/formhandling/FormState";
 import {User} from "../models/User"
-import {validateNotEmpty, validateSameValue} from "../models/validations/valuevalidations"
+import {validateEmail, validateNotEmpty, validateSameValue} from "../models/validations/valuevalidations"
 import {CurrentUserState} from "./CurrentUserState"
 import {RouterNavigationUtils} from "../utils/routing/RouterNavigationUtils"
 
@@ -19,7 +19,7 @@ export class UserRegisterOrganiserFormState extends FormState {
     }
 
     validateEmail = () => {
-        validateNotEmpty(this.model.account, 'email')
+        validateEmail(this.model.account, 'email')
     }
 
     validatePassword = () => {

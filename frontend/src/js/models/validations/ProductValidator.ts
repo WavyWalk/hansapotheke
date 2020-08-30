@@ -56,4 +56,7 @@ export class ProductValidator {
         validateModelCollectionNotEmpty(model, asKeyOf<Product>('attributes'))
     }
 
+    static validateBrand (model: Product) {
+        validateNotEmpty(model, asKeyOf<Product>('brand'))
+    }
 }

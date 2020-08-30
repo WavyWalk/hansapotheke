@@ -4,41 +4,57 @@ export const algoliaConfigData = {
 
     appId: 'FLC890HPOA',
     apiKey: '21a67458155d077c70f2893b4a43fadb',
-    indexName: 'dev_hans_demo',
+    indexName: 'hansotheke_dev',
 
     facets: {
-        educationalPoints: {
-            name: 'educationalPoints',
-            humanReadableName: 'Fortbildungspunkte'
+        activeSubstances: {
+            name: 'activeSubstances.value',
+            humanReadableName: 'Active substances'
         },
-        addressCity: {
-            name: 'eventAddress.city',
-            humanReadableName: 'In der Nähe von'
+        additiveSubstances: {
+            name: 'additiveSubstances.value',
+            humanReadableName: 'Additive substances'
         },
-        plainCategory: {
-            name: 'plainCategories.name',
-            humanReadableName: 'Ketegorie'
+        brand: {
+            name: 'brand',
+            humanReadableName: 'Brand'
         },
-        price: {
-            name: 'price',
-            humanReadableName: 'Preis'
+        retailPrice: {
+            name: 'retailPrice',
+            humanReadableName: 'Price'
         },
-        targetAudience: {
-            name: 'targetAudienceCategories.name',
-            humanReadableName: 'Zielgruppe'
+        attributes: {
+            name: 'attributes.value',
+            humanReadableName: 'Attributes'
         },
-        date: {
-            name: 'eventDates.dateTimestamp',
-            humanReadableName: 'Datum'
+        manufacturer: {
+            name: 'manufacturer.value',
+            humanReadableName: 'Manufacturer'
+        },
+        secondaryCategories: {
+            name: 'secondaryCategories.value',
+            humanReadableName: 'Secondary categories'
+        },
+        pharmaForm: {
+            name: 'pharmaForm',
+            humanReadableName: 'Pharma form'
+        },
+        packSize: {
+            name: 'packSize',
+            humanReadableName: 'Pack size'
+        },
+        prescriptionMedicine: {
+            name: 'prescriptionMedicine',
+            humanReadableName: "Prescription only"
         },
         fieldCategories: {
             names: [
-                'fieldCategoryHierarchy.lvl0',
-                'fieldCategoryHierarchy.lvl1',
-                'fieldCategoryHierarchy.lvl2',
-                'fieldCategoryHierarchy.lvl3',
-                'fieldCategoryHierarchy.lvl4',
-                'fieldCategoryHierarchy.lvl5',
+                'primary.lvl0',
+                'primary.lvl1',
+                'primary.lvl2',
+                'primary.lvl3',
+                'primary.lvl4',
+                'primary.lvl5',
             ]
         }
     }

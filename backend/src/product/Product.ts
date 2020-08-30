@@ -15,39 +15,6 @@ export class Product extends BaseModel {
         }
     }
 
-    normalizeTags = () => {
-        this.tags.array.forEach((it)=>{
-            switch (it.tagType) {
-                case 'ATTRIBUTE':
-                    this.attributes.array.push(it)
-                    break
-                case "ACTIVE_SUBSTANCE":
-                    this.activeSubstances.array.push(it)
-                    break
-                case "ADDITIVE_SUBSTANCE":
-                    this.activeSubstances.array.push(it)
-                    break
-                case "MANUFACTURER":
-                    this.manufacturer.array.push(it)
-                    break
-            }
-        })
-        this.tags.array = []
-    }
-
-    normalizeCategories = () => {
-        this.categories.array.forEach((it)=>{
-            switch (it.categoryType) {
-                case 'PRIMARY':
-                    this.primaryCategories.array.push(it)
-                    break
-                case 'SECONDARY':
-                    this.secondaryCategories.array.push(it)
-                    break
-            }
-        })
-    }
-
     @Property
     id?: number
 
@@ -120,12 +87,48 @@ export class Product extends BaseModel {
     @HasMany('Category')
     secondaryCategories!: ModelCollection<Category>
 
+    normalizeTags = () => {
+        this.tags.array.forEach((it)=>{
+            switch (it.tagType) {
+                case 'ATTRIBUTE':
+                    this.attributes.array.push(it)
+                    break
+                case "ACTIVE_SUBSTANCE":
+                    this.activeSubstances.array.push(it)
+                    break
+                case "ADDITIVE_SUBSTANCE":
+                    this.additiveSubstances.array.push(it)
+                    break
+                case "MANUFACTURER":
+                    this.manufacturer.array.push(it)
+                    break
+            }
+        })
+        this.tags.array = []
+    }
+
+    normalizeCategories = () => {
+        this.categories.array.forEach((it)=>{
+            switch (it.categoryType) {
+                case 'PRIMARY':
+                    this.primaryCategories.array.push(it)
+                    break
+                case 'SECONDARY':
+                    this.secondaryCategories.array.push(it)
+                    break
+            }
+        })
+    }
+
     getListPrice = () => {
-        return this.prices.array.find(it=>it.priceType === 'LIST_PRICE')
+        return this.prices.array.find(it=>it.priceType === 'LIST')
     }
 
     getRetailPrice = () => {
-        return this.prices.array.find(it=>it.priceType === 'RETAIL_PRICE')
+        return this.prices.array.find(it=>it.priceType === 'RETAIL')
     }
 
+    getFirstImagePath() {
+        return this.images.array[0]?.path
+    }
 }

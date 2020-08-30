@@ -34,7 +34,7 @@ export class User extends BaseModel {
     @HasMany('Role')
     roles!: ModelCollection<Role>
 
-    @ApiEndpoint('POST', {url: '/api/user/registration/organiser'})
+    @ApiEndpoint('POST', {url: '/api/user/registration/admin'})
     createOrganizer!: (options?: RequestOptions) => Promise<User>
 
     beforeCreateOrganizerRequest(options: RequestOptions) {

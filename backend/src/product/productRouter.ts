@@ -2,11 +2,16 @@ import {Router} from "express";
 import {handleAsync} from "../lib/handleAsync";
 import {productCreate} from "./usecases/productCreate";
 import {productRepository} from "./productRepository";
+import {Session} from "../Session/session";
 
 
 export const productRouter = Router({mergeParams: true})
 
 productRouter.post('/', handleAsync(async (req, res)=>{
+    if (!await Session.userIsAdmin(req)) {
+        res.sendStatus(403)
+        return
+    }
     const data = req.body
     const created = await productCreate.run(data)
     res.send(created.serialize())

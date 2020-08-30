@@ -33,6 +33,18 @@ class ProductRepository {
         return (await App.prisma.product.findMany({where: {uid}, take: 1})).length > 0
     }
 
+    getAllForAlgolia = async () => {
+        return await App.prisma.product.findMany({
+            include: {
+                tags: true,
+                categories: true,
+                prices: true,
+                images: true
+            },
+            take: 10,
+        })
+    }
+
     persistFromScrapedData = async (product: ProductFromExistingDataDto) => {
         let tagsToConnect = product.tags!.filter(it => !!it.id).map((it) => {
             return {id: it.id}
@@ -60,7 +72,9 @@ class ProductRepository {
                 descriptionShort: product.descriptionShort,
                 baseProductUidGroup: product.baseProductUid,
                 pharmaForm: product.pharmaForm,
+                prescriptionMedicine: product.prescriptionMedicine,
                 pzn: product.pzn,
+                brand: product.brand,
                 packSize: product.packSize,
                 tags: {
                     connect: tagsToConnect

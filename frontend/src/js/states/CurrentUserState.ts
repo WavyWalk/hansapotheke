@@ -18,11 +18,11 @@ export class CurrentUserState extends SubscriptionState {
         this.userInstance = null
     }
 
-    isOrganiser() {
+    isAdmin() {
         if (!this.isLoggedIn()) {
             return false
         }
-        return !!this.userInstance?.roles?.array?.find(it=>it.name === 'ORGANIZER')
+        return !!this.userInstance?.roles?.array?.find(it=>it.name === 'ADMIN')
     }
 
     isLoggedIn() {

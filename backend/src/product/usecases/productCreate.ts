@@ -4,6 +4,9 @@ import {Category} from "../../category/Category";
 import {CategoryCache} from "../../category/CategoryCache";
 import {App} from "../../App";
 import {numberToCents} from "../../utils/numberUtils";
+import {algoliaIndexer} from "../../commands/AlgoliaIndexer";
+import {algoliaProductIndexer} from "../../algolia/usecase/algoliaProductIndexer";
+import {create} from "domain";
 
 class ProductCreate {
 
@@ -29,7 +32,7 @@ class ProductCreate {
             }
         })
         const createdInstance = new Product(persisted)
-        createdInstance.normalizeTags()
+        await algoliaProductIndexer.indexSingle(createdInstance)
         return createdInstance
     }
 
@@ -109,6 +112,7 @@ class ProductCreate {
             uid: product.uid!,
             pharmaForm: product.pharmaForm,
             pzn: product.pzn,
+            brand: product.brand,
             packSize: product.packSize,
             productName: product.productName,
             descriptionShort: product.descriptionShort,

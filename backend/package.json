@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "scrapeData": "node ./dist/index.js scrapeData",
+    "indexAlgolia": "node ./dist/index.js indexAlgolia",
     "start": "npm i && npx prisma generate && npx prisma migrate up --experimental && (webpack & nodemon --watch ./dist --inspect=0.0.0.0:9231 --nolazy ./dist/index.js & (cd ../frontend && npm i && npm run build))"
   },
   "author": "",

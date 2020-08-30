@@ -10,7 +10,7 @@ export const CURRENCIES_FOR_SELECT: ISelectPair[] = ALLOWED_CURRENCIES.map((it)=
     }
 })
 
-export type IPriceType = 'LIST_PRICE' | 'RETAIL_PRICE'
+export type IPriceType = 'LIST' | 'RETAIL'
 
 export class Price extends BaseModel {
 
@@ -28,5 +28,13 @@ export class Price extends BaseModel {
 
     @Property
     currency?: number
+
+    getFormattedValue = () => {
+        let value = this.value
+        if (!value) {
+            return null
+        }
+        return `€ ${(value / 100).toFixed(2)}`.replace('.', ',')
+    }
 
 }

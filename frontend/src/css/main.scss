@@ -102,3 +102,125 @@
 .ProductNew {
     padding: 3rem 0.5rem;
 }
+
+
+.attribute {
+    border: thin solid grey;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0.5rem;
+    border-radius: 4px;
+}
+
+.ProductAlgoliaListItem {
+    .discountDisclaimer {
+        text-align: center;
+        span {
+            border: thin solid grey;
+            border-radius: 3rem;
+            padding: 1rem;
+            color: white;
+            background-color: darkred;
+        }
+    }
+    .productProperties {
+        padding: 1rem;
+    }
+    .productListFacts {
+        display: flex;
+        flex-direction: column;
+        p {
+            margin: 0.1rem;
+        };
+    }
+    .productPriceGroup {
+        display: flex;
+        flex-direction: column;
+        span {
+            font-size: 2rem;
+        }
+        .listPrice {
+            color: darkred;
+            text-decoration: line-through;
+
+        }
+    }
+}
+
+
+
+
+.ProductDetailShow {
+    .titleRow {
+        padding: 2rem 0;
+    }
+    .imageRow {
+        padding: 2rem;
+    }
+
+    .priceTabHeaderRow {
+        font-weight: bolder;
+        .listPrice {
+            color: #b1aaaa;
+        }
+        .retailPrice {
+            color: red;
+        }
+        padding: 2rem 0.5rem;
+        display: flex;
+        flex-direction: row;
+        div {
+            min-width: 25%;
+            max-width: 25%;
+        }
+    }
+
+    .priceTab {
+        border: thin solid grey;
+        padding: 2rem 0.5rem;
+        border-radius: 5px;
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+        div {
+            min-width: 25%;
+            max-width: 25%;
+        }
+        .packSize, .retailPrice, .listPrice{
+            font-size: 2rem;
+        }
+        .listPrice {
+            color: #c4bcbc;
+            text-decoration: line-through;
+        }
+        .packSize {
+            font-weight: bolder;
+        }
+        .discountAmount {
+            span {
+                border: thin solid grey;
+                border-radius: 3rem;
+                padding: 1rem;
+                color: white;
+                background-color: darkred;
+            }
+        }
+    }
+
+    .factsRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .fact {
+            padding: 0.5rem 2rem;
+            .factName {
+                font-size: 1.3rem;
+                font-weight: bolder;
+                margin: 0.2rem 0.2rem;
+            }
+        }
+    }
+
+    .productDescription {
+        margin: 2rem;
+    }
+}
